@@ -1,0 +1,122 @@
+.aldryn-newsblog-article-search .results-list .unpublished,
+.aldryn-newsblog-article.unpublished {
+    background: #f9fcee url('../../img/aldryn_newsblog/unpublished.png') repeat; /* hsl(44, 70%, 97%) */
+}
+
+.aldryn-newsblog-article-search .results-list .future,
+.aldryn-newsblog-article.future {
+    background: #eefcfc url('../../img/aldryn_newsblog/future.png') repeat; /* hsl(181, 70%, 96%) */
+}
+.imgArticleIcon{
+	 background: url('../../img/aldryn_newsblog/article-icon.png') repeat; /* hsl(181, 70%, 96%) */
+	 background-position: center;
+    background-repeat: no-repeat
+}
+
+.searchIcon{
+	 background: url('../../img/aldryn_newsblog/Google Blog Search.png') repeat; /* hsl(181, 70%, 96%) */
+	 height:26px;
+	 width:26px;
+	 border: transparent;
+	 position: relative;
+	 top: 4px;
+     left: -37px;
+     bottom: 7px;
+     right: 5px;
+}
+
+.topbar{
+    line-height: 11px;
+    padding: 12px 0;
+    color: #fff;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin: 15px 0px 0px 30px;
+    box-sizing: border-box;
+    display: block;
+    height: 35px;
+    width: 96%;
+}
+
+.searchDiv{
+	width:100%;
+	margin: 0px 0px 0px 0px;
+    padding: 0px 0px 0px 0px;
+	display: block;
+	display: block;
+	float:right;
+	position: relative;
+	background-color: transparent;
+    color: black;
+	margin-top: -12px;
+	height: 35px;
+	width: 360px;
+}
+
+.searchInput{
+	height:35px;
+	width:350px;
+	padding: 0px 10px 0px 10px;
+	background-color: transparent;
+	position: relative;
+	top: -1px;
+    left: 0px;
+    bottom: 15px;
+    right: 10px;
+    border: transparent;
+	color:#ffffff;
+	font-family: montserratbold,sans-serif;
+	font-size: 15px;
+}
+
+#pageList{
+	 float:right;
+    position:relative;
+    left:-50%;
+    text-align:left;
+}
+
+#pageList ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	
+	position:relative;
+    left:50%;
+}
+
+#pageList ul li { 
+	display: inline-block; 
+	padding: 10px 10px;
+	float:left;position:relative;
+}
+
+#pageList ul li a { 
+	text-decoration: none; 
+	padding: .2em 1em;
+	color: #fff;
+	background-color: #036;
+}
+
+#pageList ul li a:hover
+{
+	color: #fff;
+	background-color: #369;
+}
+
+#categoryStyle{
+	    margin-top: -3%;
+}
+
+#categoryStyle ul{
+	margin-left: 4%;
+    font-size: 14px;
+}
+
+#categoryStyle ul li{
+	padding: 5px 0px 5px 0px;
+}
+
+#categoryStyle ul li a{
+	margin-left: 2%;
+}

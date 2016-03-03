@@ -1,0 +1,174 @@
+{% load i18n apphooks_config_tags cms_tags sekizai_tags staticfiles thumbnail %}
+{% load url from future %}
+
+    {% addtoblock "css" %}<link rel="stylesheet" href="{% static 'css/aldryn-newsblog/article.css' %}">{% endaddtoblock %}
+   
+	<link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
+    <link href="{% static 'css/font-awesome.css' %}" rel="stylesheet">
+    <link href="{% static 'css/themetypo.css' %}" rel="stylesheet">
+    <link href="{% static 'css/styletheme/style.css' %}" rel="stylesheet">
+    <link href="{% static 'css/widget.css' %}" rel="stylesheet">
+    <link href="{% static 'css/color.css' %}" rel="stylesheet">
+    <link href="{% static 'css/flexslider.css' %}" rel="stylesheet">
+    <link href="{% static 'css/owl.carousel.css' %}" rel="stylesheet">
+   
+    <link href="{% static 'css/responsive.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap-theme.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/custom.css' %}">
+<!-- <div class="row"> -->
+<!-- <div class="kode-pagecontent col-md-9">
+<div class="kode-blog-list kode-grid-blog">
+<ul class="row"> -->
+<li class="col-md-6">
+<article class="aldryn-newsblog-article{% if article.is_featured %} aldryn-newsblog-featured{% endif %}{% if not article.published %} unpublished{% endif %}{% if article.future %} future{% endif %}" style="padding:20px;">
+
+    {% block newsblog_categories %}
+        {% if article.categories %}
+            <p class="category">
+                {% for category in article.categories.all %}
+                    <a href="{% namespace_url 'article-list-by-category' category.slug namespace=namespace default='' %}" hidden="true">{{ category.name }}</a>{% if not forloop.last %}, {% endif %}
+                {% endfor %}
+            </p>
+        {% endif %}
+    {% endblock newsblog_categories %}
+    
+	
+	
+		{% block newsblock_title %}
+		<div class="kode-time-zoon">
+			<time datetime="">"07"<span class="month">May</span></time>
+			<h5>
+				{% if not detail_view %}
+					<a href="{% namespace_url 'article-detail' article.slug namespace=namespace default='' %}" style="font-size:14px; text-decoration: none;">{% render_model article "title" %}</a>
+				{% else %}
+					{% render_model article "title" %}
+				{% endif %}
+			</h5>
+		</div>
+		{% endblock newsblock_title %}
+		
+		{% block newsblog_visual %}
+			{% if article.featured_image_id %}
+			<figure>
+				<p class="visual" >
+					{% if not detail_view %}
+						<a href="{{ article.get_absolute_url }}">
+					{% endif %}
+					<img src="{% thumbnail article.featured_image.image 800x450 crop subject_location=article.featured_image.subject_location %}" alt="{{ article.featured_image.alt }}" class="img-responsive">
+					{% if not detail_view %}
+						</a>
+					{% endif %}
+				</p>
+			</figure>
+			{% endif %}
+		{% endblock newsblog_visual %}
+		
+    {% block newsblog_meta %}
+        {% if not detail_view %}
+		<!-- <img style="width: 50px;
+	height: 50px;
+	border-radius: 150px;
+	-webkit-border-radius: 150px;
+	-moz-border-radius: 150px;background-color:#e15258;margin-left:11px;margin-top: -37px;" class="imgArticleIcon"></img> -->
+
+            <div class="kode-blog-info">
+				<ul class="kode-blog-options">
+                    <li><a href="#"><i class="fa fa-user"></i> Jozaf</a></li>
+                    <li><a href="#"><i class="fa fa-comment"></i> 3 Comments</a></li>
+                    <li><a href="#"><i class="fa fa-share-alt"></i> 12 Share</a></li>
+                </ul>
+				
+                {% render_model article "lead_in" "" "" "truncatewords:'40'" %}
+				<br>
+				<a href="#" class="kode-modrenbtn thbg-colorhover">Read More</a>
+                <div class="clearfix"></div>
+                <ul class="kode-team-network">
+                            <li><a class="fa fa-facebook" href="#"></a></li>
+                            <li><a class="fa fa-twitter" href="#"></a></li>
+                            <li><a class="fa fa-linkedin" href="#"></a></li>
+                </ul>
+            </div>
+        {% endif %}
+
+        {% include "aldryn_newsblog/includes/author.html" with author=article.author %}
+
+        {% if article.tags and detail_view %}
+            <p class="tags">
+                {% for tag in article.tags.all %}
+                    <a href="{% namespace_url 'article-list-by-tag' tag=tag.slug namespace=namespace default='' %}">{{ tag.name }}</a>
+                {% endfor %}
+            </p>
+        {% endif %}
+
+        {% if detail_view %}
+            <div class="lead">
+                {% render_model article "lead_in" %}
+            </div>
+        {% endif %}
+    {% endblock newsblog_meta %}
+
+
+
+    {% block newsblog_content %}
+        {% if detail_view %}
+            <div class="content">
+                {% render_placeholder article.content language placeholder_language %}
+            </div>
+        {% endif %}
+    {% endblock newsblog_content %}
+</article>
+</li>
+<!-- </ul>
+</div>
+</div> -->
+<!-- </div> -->
+
+<script src="{% static 'js/jquery.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/jquery.flexslider.js' %}"></script>
+<script src="{% static 'js/owl.carousel.min.js' %}"></script>
+<script src="{% static 'js/jquery.countdown.js' %}"></script>
+<script src="{% static 'js/waypoints-min.js' %}"></script>
+<script src="{% static 'js/jquery.bxslider.min.js' %}"></script>
+<script src="{% static 'js/bootstrap-progressbar.js' %}"></script>
+<script src="{% static 'js/jquery.accordion.js' %}"></script>
+<script src="{% static 'js/jquery.circlechart.js' %}"></script>
+<script src="{% static 'js/jquery.prettyphoto.js' %}"></script>
+<script src="{% static 'js/kode_pp.js' %}"></script>
+<script src="{% static 'js/functions.js' %}"></script>
+<script>
+	$( document ).ready(function() {
+	var input = {% render_model article "publishing_date" %};
+	function parseDate(input) {
+	var parts = input.split('-');
+  // new Date(year, month [, day [, hours[, minutes[, seconds[, ms]]]]])
+	var pub_date = new Date(parts[0], parts[1]-1, parts[2]); // Note: months are 0-based
+	return pub_date;
+	}
+	alert(pub_date);
+	var date_pub = pub_date.getDate();
+	alert(date_pub);
+	var month_pub = pub_date.getMonth();
+	alert(month_pub);
+	var pub_month;
+	if (month_pub == 0){
+		pub_month = "January";
+	}else if (month_pub == 1){
+		pub_month = "February";
+	}else if (month_pub == 2){
+		pub_month = "March";
+	}else if (month_pub == 3){
+		pub_month = "April";
+	}else if (month_pub == 4){
+		pub_month = "May";	
+	}else if (month_pub == 5){
+		pub_month = "June";
+	}else if (month_pub == 6){
+		pub_month = "July";
+	}else if (month_pub == 7){
+		pub_month = "August";
+	}
+	});
+	</script>
